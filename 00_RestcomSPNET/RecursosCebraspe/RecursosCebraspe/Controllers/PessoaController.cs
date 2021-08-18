@@ -7,10 +7,12 @@ using Microsoft.Extensions.Logging;
 using RecursosCebraspe.Models;
 using RecursosCebraspe.Service;
 
+
 namespace RecursosCebraspe.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1")]
+    [Route("api/[controller]/v{version:apiVersion}")]
     public class PessoaController : ControllerBase
     {
         

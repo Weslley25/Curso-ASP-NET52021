@@ -32,6 +32,7 @@ namespace RecursosCebraspe
             var connection = Configuration["ConnectionStrings:SQLConnectionStrings"];
             services.AddDbContext<SQLContext>(options => options.UseSqlServer(connection));
             services.AddControllers();
+            services.AddApiVersioning();
             services.AddScoped<IPessoaService, PessoaServiceImplementation>();
         }
 
