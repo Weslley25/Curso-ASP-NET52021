@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using System.Threading;
 using RecursosCebraspe.Models.Context;
 
-namespace RecursosCebraspe.Service.implementation
+namespace RecursosCebraspe.Repository.implementation
 {
-    public class PessoaServiceImplementation : IPessoaService
+    public class PessoaRepositoryImplementation : IPessoaRespository
     {
         private SQLContext _context;
-        public PessoaServiceImplementation(SQLContext context)
+        public PessoaRepositoryImplementation(SQLContext context)
         {
             _context = context;
         }
@@ -87,9 +87,11 @@ namespace RecursosCebraspe.Service.implementation
             return pessoa;
         }
 
-        private bool Exists(Pessoa pessoa)
+        public bool Exists(Pessoa pessoa)
         {
             return _context.Pessoas.Any(p => p.ID.Equals(pessoa.ID));
         }
+
+       
     }
 }

@@ -1,9 +1,10 @@
 ﻿using RecursosCebraspe.Models;
 using System.Collections.Generic;
 
-namespace RecursosCebraspe.Service
+namespace RecursosCebraspe.Business
+
 {
-    public interface IPessoaService
+    public interface IPessoaBusiness
     {
         Pessoa Create(Pessoa pessoa);
         Pessoa FindById(int id);

@@ -11,9 +11,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using RecursosCebraspe.Business;
+using RecursosCebraspe.Business.implementation;
 using RecursosCebraspe.Models.Context;
-using RecursosCebraspe.Service;
-using RecursosCebraspe.Service.implementation;
+using RecursosCebraspe.Repository;
+using RecursosCebraspe.Repository.implementation;
+
 
 namespace RecursosCebraspe
 {
@@ -33,7 +36,8 @@ namespace RecursosCebraspe
             services.AddDbContext<SQLContext>(options => options.UseSqlServer(connection));
             services.AddControllers();
             services.AddApiVersioning();
-            services.AddScoped<IPessoaService, PessoaServiceImplementation>();
+            services.AddScoped<IPessoaBusiness, PessoaBusinessImplementation>();
+            services.AddScoped<IPessoaRespository, PessoaRepositoryImplementation>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
