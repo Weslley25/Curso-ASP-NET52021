@@ -15,7 +15,19 @@ namespace RecursosCebraspe.Repository.implementation
         {
             _context = context;
         }
-        
+
+        public List<Pessoa> FindAll()
+        {
+            var listpessoas = _context.Pessoas.ToList();
+            return listpessoas;
+        }
+
+
+
+        public Pessoa FindById(int id)
+        {
+            return _context.Pessoas.SingleOrDefault(p => p.ID.Equals(id));
+        }
 
         public Pessoa Create(Pessoa pessoa)
         {
@@ -27,10 +39,37 @@ namespace RecursosCebraspe.Repository.implementation
             catch (Exception)
             {
 
-                throw ;
+                throw;
             }
             return pessoa;
         }
+
+        public Pessoa Update(Pessoa pessoa)
+        {
+            if (!Exists(pessoa))
+            {
+                return null;
+            }
+            var result = _context.Pessoas.SingleOrDefault(p => p.ID.Equals(pessoa.ID));
+            if (result != null)
+            {
+                try
+                {
+                    _context.Entry(result).CurrentValues.SetValues(pessoa);
+                    _context.SaveChanges();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+
+            return pessoa;
+        }
+
+        
+
 
         public void delete(int id)
         {
@@ -50,42 +89,7 @@ namespace RecursosCebraspe.Repository.implementation
             }
         }
 
-        public List<Pessoa> FindAll()
-        {
-            var listpessoas = _context.Pessoas.ToList();
-            return listpessoas;
-        }
-
-        
-
-        public Pessoa FindById(int id)
-        {
-            return _context.Pessoas.SingleOrDefault(p => p.ID.Equals(id));
-        }
-
-        public Pessoa Update(Pessoa pessoa)
-        {
-            if (!Exists(pessoa))
-            {
-                return new Pessoa();
-            }
-            var result = _context.Pessoas.SingleOrDefault(p => p.ID.Equals(pessoa.ID));
-            if (result != null)
-            {
-                try
-                {
-                    _context.Entry(result).CurrentValues.SetValues(pessoa);
-                    _context.SaveChanges();
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-            }
-            
-            return pessoa;
-        }
+       
 
         public bool Exists(Pessoa pessoa)
         {
