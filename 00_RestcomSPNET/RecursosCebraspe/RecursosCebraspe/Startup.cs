@@ -16,6 +16,7 @@ using RecursosCebraspe.Business.implementation;
 
 using RecursosCebraspe.Models.Context;
 using RecursosCebraspe.Repository;
+using RecursosCebraspe.Repository.Generic;
 using RecursosCebraspe.Repository.implementation;
 using Serilog;
 
@@ -50,7 +51,8 @@ namespace RecursosCebraspe
             services.AddScoped<IPessoaBusiness, PessoaBusinessImplementation>();
             services.AddScoped<IPessoaRespository, PessoaRepositoryImplementation>();
             services.AddScoped<ILivroBussines, LivroBusinessImplementation>();
-            services.AddScoped<ILivroRespository, LivroRepositoryImplementation>();
+           
+            services.AddScoped(typeof(IRepository<>), typeof(GenereciRepository<>));
             
 
         }

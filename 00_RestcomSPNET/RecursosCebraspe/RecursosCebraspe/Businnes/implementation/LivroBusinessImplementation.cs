@@ -1,5 +1,6 @@
 ﻿using RecursosCebraspe.Models;
 using RecursosCebraspe.Repository;
+using RecursosCebraspe.Repository.Generic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace RecursosCebraspe.Business.implementation
 {
     public class LivroBusinessImplementation : ILivroBussines
     {
-        public readonly ILivroRespository _livroRespository;
+        public readonly IRepository<Livro> _livroRespository;
 
-        public LivroBusinessImplementation(ILivroRespository livroRespository)
+        public LivroBusinessImplementation(IRepository<Livro> livroRespository)
         {
             _livroRespository = livroRespository;
         }

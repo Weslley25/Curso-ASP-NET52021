@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 namespace RecursosCebraspe.Models
 {
     [Table("Livro")]
-    public class Livro
+    public class Livro :BaseEntity
     {
-        [Column("id")]
-        public int Id { get; set; }
+       
         [Column("Autor")]
         public string? Autor { get; set; }
         [Column("Data_lançamento")]
